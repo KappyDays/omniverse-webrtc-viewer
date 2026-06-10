@@ -1,0 +1,69 @@
+{
+    "name": "omniverse-webrtc-viewer",
+    "version": "0.1.0",
+    "description": "Desktop viewer for direct Omniverse Kit WebRTC streams.",
+    "author": "KappyDays",
+    "license": "SEE LICENSE IN LICENSE",
+    "private": true,
+    "type": "module",
+    "main": "dist-electron/main.cjs",
+    "engines": {
+        "node": "^22.13.0 || >=24.0.0",
+        "npm": ">=10.0.0"
+    },
+    "scripts": {
+        "dev": "npm run web:190",
+        "dev:web": "npm run web:190",
+        "web:190": "vite --mode target190",
+        "web:195": "vite --mode target195",
+        "app:190": "concurrently -k \"npm run web:190\" \"wait-on http://127.0.0.1:5176 && cross-env VITE_DEV_SERVER_URL=http://127.0.0.1:5176 electron .\"",
+        "app:195": "concurrently -k \"npm run web:195\" \"wait-on http://127.0.0.1:5175 && cross-env VITE_DEV_SERVER_URL=http://127.0.0.1:5175 electron .\"",
+        "build": "tsc && vite build && tsc -p tsconfig.electron.json",
+        "start": "electron .",
+        "test": "vitest run",
+        "lint": "eslint .",
+        "preview": "vite preview"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ],
+        "globals": {
+            "GFN": "readonly"
+        }
+    },
+    "dependencies": {
+        "@nvidia/omniverse-webrtc-streaming-library": "5.6.0",
+        "bootstrap": "^5.3.3",
+        "lucide-react": "^0.468.0",
+        "prop-types": "^15.8.1",
+        "react": "^18.2.0",
+        "react-bootstrap": "^2.9.1",
+        "react-dom": "^18.2.0",
+        "react-grid-layout": "^2.2.3"
+    },
+    "devDependencies": {
+        "@testing-library/dom": "^10.4.1",
+        "@testing-library/jest-dom": "^6.4.8",
+        "@testing-library/react": "^16.0.1",
+        "@types/node": "^22.10.2",
+        "@types/react": "^18.2.43",
+        "@types/react-dom": "^18.2.17",
+        "@typescript-eslint/eslint-plugin": "^8.18.1",
+        "@typescript-eslint/parser": "^8.18.1",
+        "@vitejs/plugin-react": "^4.7.0",
+        "concurrently": "^9.1.0",
+        "cross-env": "^7.0.3",
+        "electron": "^42.3.3",
+        "eslint": "^9.17.0",
+        "eslint-plugin-react-hooks": "^5.1.0",
+        "eslint-plugin-react-refresh": "^0.4.5",
+        "jsdom": "^29.1.1",
+        "typescript": "^5.2.2",
+        "vite": "^5.4.21",
+        "vite-plugin-externals": "^0.6.2",
+        "vitest": "^4.1.8",
+        "wait-on": "^8.0.1"
+    }
+}

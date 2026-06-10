@@ -1,0 +1,36 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+/deps/@omniverse/omniverse-webrtc-streaming-library/node_modules
+dist-ssr
+dist
+dist-electron
+.vite
+release
+*.local
+.env
+.env.*
+!.env.example
+!.env.*.example
+.env*.local
+stream.config.local.json
+.yalc
+yalc.lock
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
